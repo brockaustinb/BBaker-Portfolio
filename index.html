@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brock Baker Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Brock Baker Portfolio</h1>
+        <nav>
+            <span class="nav-link" onclick="showSection('about')">About Me</span>
+            <span class="nav-link" onclick="showSection('projects')">Projects</span>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="hidden">
+            <h2>About Me</h2>
+            <img src="websitepic.jpg" alt="Brock Baker">
+            <p>Hello! I'm Brock Baker, a professional specializing in [your field]. I have a passion for [briefly describe what you’re passionate about or your expertise].</p>
+            <section class="contact-info">
+                <h3>Contact Information</h3>
+                <p>Email: <a href="mailto:brockbaker@icloud.com">brockbaker@icloud.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 (972) 345-7560</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/brock-baker-752a56274/" target="_blank">https://www.linkedin.com/in/brock-baker-752a56274/</a></p>
+            </section>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <section class="project">
+                <h3>United Parcel Service (UPS) | CNG Fuel Pump Research</h3>
+                <p class="learn-more" onclick="toggleDetails('cng-details')">Click to learn more</p>
+                <div class="project-details" id="cng-details">
+                    <p>This project focuses on researching the efficiency and cost-effectiveness of implementing CNG fuel pumps in commercial fleets. The study covers installation costs, maintenance, and environmental benefits.</p>
+                </div>
+                <p><a href="Brock_Baker_CNG.pdf" target="_blank">View Project PDF</a></p>
+            </section>
+            <section class="project">
+                <h3>ViscoFan | International Engineering Project</h3>
+                <p class="learn-more" onclick="toggleDetails('viscofan-details')">Click to learn more</p>
+                <div class="project-details" id="viscofan-details">
+                    <p>This project involved working with ViscoFan to optimize their production processes. Key aspects included the implementation of new technologies and improving operational efficiencies across multiple international sites.</p>
+                </div>
+                <p><a href="ViscoFan_International_Engineering_Project.pdf" target="_blank">View Project PDF</a></p>
+            </section>
+            <section class="project">
+                <h3>Business Engineering Technology Product Design and Development</h3>
+                <p class="learn-more" onclick="toggleDetails('business-details')">Click to learn more</p>
+                <div class="project-details" id="business-details">
+                    <p>This project centered around the design and development of a new technology product aimed at improving business operations. The project included market research, prototyping, and testing to ensure the product met industry standards.</p>
+                </div>
+                <p><a href="Business_Engineering_Technology_Product_Design_and_Development.pdf" target="_blank">View Project PDF</a></p>
+            </section>
+        </section>
+    </main>
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('about').classList.add('hidden');
+            document.getElementById('projects').classList.add('hidden');
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelector(`.nav-link[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        }
+
+        function toggleDetails(detailId) {
+            const details = document.getElementById(detailId);
+            details.style.display = (details.style.display === 'none' || details.style.display === '') ? 'block' : 'none';
+        }
+
+        // Initialize with the About Me section visible
+        document.addEventListener('DOMContentLoaded', () => showSection('about'));
+    </script>
+</body>
+</html>
